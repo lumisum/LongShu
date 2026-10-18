@@ -1,0 +1,54 @@
+# Credentials and machine-local environment values
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.template
+**/secrets/**
+**/*credentials*.json
+**/*.pem
+**/*.key
+
+# Local datasets, downloaded models, caches, and logs
+/Data/**
+!/Data/README.md
+/Models/**
+!/Models/README.md
+/Cache/**
+/Logs/**
+/WSL/**
+/Docker/DockerDesktopWSL/
+/DockerShare/**
+/Tools/**
+
+# Container and virtual-machine state
+**/*.vhdx
+**/pgdata/
+**/postgres-data/
+**/redis-data/
+**/volumes/
+**/containerd/
+**/overlay2/
+
+# Local runtime and generated files
+**/node_modules/
+**/__pycache__/
+**/.venv/
+**/venv/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/dist/
+**/build/
+**/coverage/
+**/*.log
+**/*.pid
+**/raw/
+**/parsed/
+*.swp
+*.tmp
+Thumbs.db
+Desktop.ini
+
+# Local SEC filing manifest
+/Projects/sec-filings-intel-glw/filings.json

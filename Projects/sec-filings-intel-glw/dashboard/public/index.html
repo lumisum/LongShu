@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101927">
+  <title>龙树 · SEC 财报实时分析</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="龙树 SEC 工作台首页">
+        <span class="brand-mark">L</span>
+        <span><strong>LONGSHU</strong><small>本地研究工作台</small></span>
+      </a>
+      <div class="top-context"><span class="eyebrow">SEC FILINGS LAB</span><span>INTEL <i>·</i> CORNING</span></div>
+      <div id="connection" class="connection"><span class="connection-dot"></span><span>正在连接</span></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">财报分析 · 实时追踪</div>
+          <h1>每一步处理，都有迹可循。</h1>
+          <p>SEC 文件、MinerU GPU 解析、页级证据和结构化信息点在这里汇总。页面打开后先载入已有成果，再持续接收数据库更新。</p>
+        </div>
+        <div class="hero-meta"><span class="pulse"></span><span id="updated-at">正在载入数据库快照</span></div>
+      </section>
+
+      <section class="summary-grid" aria-label="数据概况">
+        <article class="summary-card"><span class="summary-label">SEC 文件</span><strong id="count-filings">—</strong><small>Intel 与 Corning</small></article>
+        <article class="summary-card"><span class="summary-label">页级证据</span><strong id="count-pages">—</strong><small>可回溯到原始页码</small></article>
+        <article class="summary-card"><span class="summary-label">结构化信息点</span><strong id="count-facts">—</strong><small>每条附原文摘录</small></article>
+        <article class="summary-card"><span class="summary-label">处理步骤</span><strong id="count-events">—</strong><small>历史记录与实时进展</small></article>
+      </section>
+
+      <section class="resource-panel panel">
+        <div class="section-head resource-head">
+          <div><div class="eyebrow">机器状态</div><h2>本机资源</h2></div>
+          <span class="live-label"><span class="tiny-live"></span>约每 3 秒更新</span>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-item">
+            <div class="resource-top"><span>CPU</span><strong id="cpu-value">—</strong></div>
+            <div class="meter"><span id="cpu-meter"></span></div>
+            <small id="cpu-detail">等待采样</small>
+          </article>
+          <article class="resource-item">
+            <div class="resource-top"><span>内存 RAM</span><strong id="ram-value">—</strong></div>
+            <div class="meter"><span id="ram-meter"></span></div>
+            <small id="ram-detail">等待采样</small>
+          </article>
+          <article class="resource-item gpu-item">
+            <div class="resource-top"><span>GPU · RTX 4070</span><strong id="gpu-value">—</strong></div>
+            <div class="meter gpu-meter"><span id="gpu-meter"></span></div>
+            <small id="gpu-detail">正在读取 MinerU 容器中的显卡状态</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div><div class="eyebrow">SOURCE LIBRARY</div><h2>已处理文件</h2></div>
+          <span class="section-note">来源链接 · 本地文件 · 解析页数</span>
+        </div>
+        <div id="filings" class="filing-grid"><div class="empty-card">正在从数据库载入文件清单…</div></div>
+      </section>
+
+      <section class="section-block panel timeline-panel">
+        <div class="section-head">
+          <div><div class="eyebrow">LIVE PIPELINE</div><h2>处理时间线</h2></div>
+          <span class="section-note">新步骤提交到数据库后会立即推送</span>
+        </div>
+        <div id="timeline" class="timeline"><div class="empty-state">正在载入已完成步骤…</div></div>
+      </section>
+
+      <section class="section-block panel facts-panel">
+        <div class="section-head facts-head">
+          <div><div class="eyebrow">TRACEABLE OUTPUT</div><h2>提取结果与原文回溯</h2></div>
+          <span id="facts-count-label" class="section-note">— 条信息点</span>
+        </div>
+        <div class="filters">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="fact-search" type="search" placeholder="搜索指标、期间或原文内容" autocomplete="off"></label>
+          <div class="company-filters" role="group" aria-label="按公司筛选">
+            <button class="filter-button active" data-ticker="ALL">全部</button>
+            <button class="filter-button" data-ticker="INTC">Intel</button>
+            <button class="filter-button" data-ticker="GLW">Corning</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>公司 / 报告</th><th>信息点</th><th>期间</th><th>数值</th><th>页码与原文证据</th></tr></thead>
+            <tbody id="facts-body"><tr><td colspan="5" class="empty-table">正在载入提取结果…</td></tr></tbody>
+          </table>
+        </div>
+        <div id="facts-empty" class="empty-state hidden">没有符合筛选条件的信息点。</div>
+      </section>
+
+      <footer><span>LONGSHU · SEC FILINGS LAB</span><span>处理产出保存在本机 LongShu 数据目录</span></footer>
+    </main>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
