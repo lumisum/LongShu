@@ -40,3 +40,12 @@ SEC 工作流对 Intel 与 Corning 定期报告进行 MinerU GPU 解析，将页
 3. 暂存清单只应包含源码、通用配置和文档。
 
 目录边界与提交规则另见 docs/repository-layout.md。
+## Node.js 工作台
+
+在 LongShu 根目录运行 start-nodejs.ps1、stop-nodejs.ps1 或 restart-nodejs.ps1，也可以双击对应的 .bat 文件。工作台地址为 http://127.0.0.1:8090。Node.js 服务与 Docker 容器分开管理。
+
+## 基础服务
+
+运行 start-services.ps1 或双击 start-services.bat，可启动 Docker Desktop、MinerU GPU、PostgreSQL、Redis 和 pgvector PostgreSQL。该脚本不会启动 SEC 分析流水线。停止或重启 Node.js 页面服务不会停止 Docker 容器。
+
+需要运行 SEC 分析时，在 LongShu 根目录执行 python Projects/sec-filings-intel-glw/run_pipeline.py。本机 filings.json 和 SEC 原件需要预先存在。项目结构、运行规则和数据边界见 AGENT.MD。

@@ -1,0 +1,5 @@
+---
+description: LongShu shared project instructions
+alwaysApply: true
+---
+Read the root AGENT.MD before changing this project. Follow its architecture, startup procedures, E-drive data boundary, GPU requirement, and Git rules. Do not add secrets, local datasets, model files, Docker volumes, or Sika.
