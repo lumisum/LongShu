@@ -73,6 +73,22 @@ if (-not $engineReady) {
     } while (-not $engineReady)
 }
 
+$managedContainers = @(
+    'mineru-api',
+    'mineru-webui',
+    'mineru-postgres',
+    'mineru-redis',
+    'nagarjuna-postgres'
+)
+foreach ($containerName in $managedContainers) {
+    $containerId = (& $docker.Source ps -aq --filter "name=^/$containerName$" | Out-String).Trim()
+    if ($LASTEXITCODE -ne 0) { throw "无法检查容器：$containerName" }
+    if ($containerId) {
+        & $docker.Source update --restart=no $containerId | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "无法关闭容器自动重启：$containerName" }
+    }
+}
+
 foreach ($stack in $stacks) {
     Write-Output "正在启动：$($stack.Name)"
     Push-Location $stack.Directory

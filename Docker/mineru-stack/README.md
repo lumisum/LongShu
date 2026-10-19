@@ -4,13 +4,13 @@
 
 ## 启动
 
-在此目录运行：
+从 `E:\LongShu` 根目录运行：
 
 ```powershell
-docker compose up -d --build
+./start-services.ps1
 ```
 
-首次构建需要下载 CUDA/vLLM 基础镜像、Python 依赖和模型文件，耗时取决于网络。MinerU API 使用 GPU 0；WebUI 通过 Docker 内部网络连接 API，不会再启动第二个推理实例。
+也可以双击 `start-services.bat`。基础服务不会在 Windows 开机时自动启动。首次构建需要下载 CUDA/vLLM 基础镜像、Python 依赖和模型文件，耗时取决于网络。MinerU API 使用 GPU 0；WebUI 通过 Docker 内部网络连接 API，不会再启动第二个推理实例。
 
 ## 服务地址
 
@@ -27,13 +27,12 @@ PostgreSQL 与 Redis 是独立开发服务，带持久化卷；MinerU 默认不�
 ## 管理
 
 ```powershell
-docker compose ps
-docker compose logs -f mineru-api
-docker compose stop
-docker compose down
+./stop-services.ps1
 ```
 
-`docker compose down` 会保留数据库和 Redis 数据卷。删除数据卷的命令是 `docker compose down -v`。
+停止脚本会停止两个 LongShu 基础服务栈中的容器并保留数据卷。需要查看状态或日志时，可在对应目录使用 `docker compose ps` 或 `docker compose logs -f mineru-api`。
+
+Compose 服务采用 `restart: "no"`，Docker Desktop 或 Windows 重启后不会自动拉起容器。不要使用 `docker compose down -v`，该命令会删除数据卷。
 
 ## 版本和来源
 

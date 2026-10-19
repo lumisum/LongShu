@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: mineru-api
-    restart: unless-stopped
+    restart: "no"
     init: true
     ports:
       - "127.0.0.1:${MINERU_API_PORT:-8000}:8000"
@@ -45,7 +45,7 @@ services:
   mineru-webui:
     image: mineru:4.0.9-gpu
     container_name: mineru-webui
-    restart: unless-stopped
+    restart: "no"
     init: true
     depends_on:
       mineru-api:
@@ -67,7 +67,7 @@ services:
   postgres:
     image: postgres:18.6
     container_name: mineru-postgres
-    restart: unless-stopped
+    restart: "no"
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-mineru}
       POSTGRES_USER: ${POSTGRES_USER:-mineru}
@@ -85,7 +85,7 @@ services:
   redis:
     image: redis:8.10.2-alpine
     container_name: mineru-redis
-    restart: unless-stopped
+    restart: "no"
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD in .env}
     command:

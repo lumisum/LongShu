@@ -18,7 +18,7 @@
 
 项目清单中的本地文件路径使用相对于 LongShu 根目录的正斜杠路径。Python 流水线默认从 LONGSHU_HOME 环境变量定位 LongShu；未设置时从自身源码路径推导根目录。数据默认放在 Data/Finance/SEC/，可通过 SEC_DATA_DIR 覆盖。
 
-Docker Compose 配置只定义容器和服务。Docker Desktop 的数据盘位置由本机 Docker Desktop 设置管理，不应在 Git 中记录虚拟磁盘文件。
+Docker Compose 配置只定义容器和服务。Docker Desktop 的数据盘位置由本机 Docker Desktop 设置管理，不应在 Git 中记录虚拟磁盘文件。本机 Docker Desktop 的 WSL 数据路径配置为 `E:\LongShu\Docker\DockerDesktopWSL`。Docker Desktop 开机自启保持关闭，Compose 服务使用 `restart: "no"`；只能通过 LongShu 的手动启动脚本启动服务。
 
 ## 推送前检查
 
